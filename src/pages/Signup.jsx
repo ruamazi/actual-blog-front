@@ -1,6 +1,7 @@
 import { Alert, Button, Label, TextInput } from "flowbite-react";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import Oauth from "../components/Oauth";
 
 export const backendUrl = import.meta.env.VITE_BACKEND_URL;
 
@@ -12,7 +13,6 @@ const Signup = () => {
 
   const handleChange = (e) => {
     setInputV((prev) => ({ ...prev, [e.target.id]: e.target.value.trim() }));
-    console.log(inputV);
   };
 
   const createUser = async (e) => {
@@ -39,8 +39,8 @@ const Signup = () => {
         navigate("/sign-in");
       }
     } catch (error) {
-      setCreating(false);
       console.log(error);
+      setCreating(false);
       return setErrorMsg(error.message);
     }
   };
@@ -100,6 +100,7 @@ const Signup = () => {
             >
               {creating ? "Submiting..." : "Submit"}
             </Button>
+            <Oauth />
           </form>
           <div className="flex gap-2 my-5 text-sm">
             <span>Have an account?</span>

@@ -2,7 +2,7 @@ import { Button } from "flowbite-react";
 import { FaGoogle } from "react-icons/fa";
 import { GoogleAuthProvider, signInWithPopup, getAuth } from "firebase/auth";
 import { app } from "../firebase";
-import { backendUrl } from "../pages/signup";
+import { backendUrl } from "../pages/Signup";
 import { useDispatch } from "react-redux";
 import { signInSuccess } from "../redux/user/userSlice";
 import { useNavigate } from "react-router-dom";
@@ -20,6 +20,7 @@ const Oauth = () => {
       const result = await signInWithPopup(auth, provider);
       const resp = await fetch(`${backendUrl}/api/auth/google`, {
         method: "POST",
+        credentials: "include",
         headers: {
           "Content-Type": "application/json",
         },

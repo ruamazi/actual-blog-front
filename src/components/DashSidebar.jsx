@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import {
   HiAnnotation,
   HiArrowSmRight,
+  HiChartPie,
   HiDocumentText,
   HiOutlineUserGroup,
   HiUser,
@@ -10,6 +11,8 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation } from "react-router-dom";
 import { Link } from "react-router-dom";
+import { signOutSuccess } from "../redux/user/userSlice";
+import { backendUrl } from "../pages/Signup";
 
 const DashSidebar = () => {
   const [tab, setTab] = useState("");
@@ -26,7 +29,12 @@ const DashSidebar = () => {
 
   const handleSignout = async () => {
     try {
-      console.log("zb");
+      const resp = await fetch(`${backendUrl}/api/user/sign-out`);
+      const data = await resp.json();
+      if (!resp.ok) {
+        return console.log(data.message);
+      }
+      dispatch(signOutSuccess());
     } catch (err) {
       console.log(err);
     }

@@ -72,7 +72,7 @@ const PostPage = () => {
         </Link>
       )}
 
-      {post.image && (
+      {post && post.image && (
         <img
           src={post && post.image}
           alt={post && post.title}

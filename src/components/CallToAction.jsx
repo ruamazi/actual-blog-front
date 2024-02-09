@@ -12,11 +12,7 @@ export default function CallToAction() {
           gradientDuoTone="purpleToPink"
           className="rounded-tl-xl rounded-bl-none"
         >
-          <a
-            href="https://www.100jsprojects.com"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+          <a href="#" target="_blank" rel="noopener noreferrer">
             100 JavaScript Projects
           </a>
         </Button>

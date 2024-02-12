@@ -16,22 +16,25 @@ const Comment = ({ comment, onDelete, onEdit, handleLike }) => {
   };
   const handleSave = async () => {
     try {
-      const res = await fetch(`${backendUrl}/api/comment/edit/${comment._id}`, {
-        method: "PUT",
-        credentials: "include",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          content: editedContent,
-        }),
-      });
-      if (res.ok) {
+      const resp = await fetch(
+        `${backendUrl}/api/comment/edit/${comment._id}`,
+        {
+          method: "PUT",
+          credentials: "include",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            content: editedContent,
+          }),
+        }
+      );
+      if (resp.ok) {
         setIsEditing(false);
         onEdit(comment, editedContent);
       }
     } catch (error) {
-      console.log(error.message);
+      console.log(error);
     }
   };
   return (

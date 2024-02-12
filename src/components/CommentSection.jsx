@@ -96,7 +96,6 @@ const CommentSection = ({ postId }) => {
           credentials: "include",
         }
       );
-      const data = await resp.json();
       if (resp.ok) {
         setComments(comments.filter((comment) => comment._id !== commentId));
       }

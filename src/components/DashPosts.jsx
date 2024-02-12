@@ -5,9 +5,12 @@ import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { backendUrl } from "../pages/Signup";
 
+export const postImgPlaceHolder =
+  "https://media.istockphoto.com/id/1147544809/vector/no-thumbnail-image-vector-graphic.jpg?s=612x612&w=0&k=20&c=JMw37miGVmNxeWSZx7vPDCEyhcY2Xh-bVISBGgtVo6Q=";
+
 const DashPosts = () => {
   const { currentUser } = useSelector((state) => state.user);
-  const [userPosts, setUserPosts] = useState([]);
+  const [userPosts, setUserPosts] = useState(null);
   const [showMore, setShowMore] = useState(true);
   const [showModal, setShowModal] = useState(false);
   const [postIdToDelete, setPostIdToDelete] = useState("");
@@ -79,6 +82,14 @@ const DashPosts = () => {
     }
   };
 
+  if (!userPosts) {
+    return (
+      <div className="flex mx-auto justify-center my-10">
+        <div className="loaderrr"></div>
+      </div>
+    );
+  }
+
   return (
     <div
       className="table-auto max-md:overflow-x-scroll md:mx-auto p-3 scrollbar 
@@ -107,11 +118,7 @@ const DashPosts = () => {
                   <Table.Cell>
                     <Link to={`/post/${post.slug}`}>
                       <img
-                        src={
-                          post.image
-                            ? post.image
-                            : "https://upload.wikimedia.org/wikipedia/commons/6/65/No-Image-Placeholder.svg"
-                        }
+                        src={post.image ? post.image : postImgPlaceHolder}
                         alt={post.title}
                         className="w-20 h-10 object-cover bg-gray-500"
                       />

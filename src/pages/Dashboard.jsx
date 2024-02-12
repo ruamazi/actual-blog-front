@@ -4,6 +4,8 @@ import DashSidebar from "../components/dashSidebar";
 import DashProfile from "../components/dashProfile";
 import DashPosts from "../components/DashPosts";
 import DashUsers from "../components/DashUsers";
+import DashComments from "../components/DashComments";
+import DashMain from "../components/DashMain";
 
 const Dashboard = () => {
   const [tab, setTab] = useState("profile");
@@ -23,12 +25,16 @@ const Dashboard = () => {
       <div className="md:w-56">
         <DashSidebar />
       </div>
-      {/* hero */}
+      {/* dashBoard */}
+      {tab === "dash" && <DashMain />}
+      {/* profile */}
       {tab === "profile" && <DashProfile />}
       {/* posts */}
       {tab === "posts" && <DashPosts />}
       {/* users */}
       {tab === "users" && <DashUsers />}
+      {/* comments */}
+      {tab === "comments" && <DashComments />}
     </div>
   );
 };

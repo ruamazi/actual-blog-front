@@ -12,6 +12,7 @@ import CreatePost from "./pages/CreatePost";
 import AdminRoute from "./components/AdminRoute";
 import UpdatePost from "./pages/UpdatePost";
 import PostPage from "./pages/PostPage";
+import Search from "./pages/Search";
 
 function App() {
   return (
@@ -33,6 +34,7 @@ function App() {
         <Route path="/projects" element={<Projects />} />
         <Route path="/post/:postSlug" element={<PostPage />} />
         <Route path="/about" element={<About />} />
+        <Route path="/search" element={<Search />} />
       </Routes>
       <Footer />
     </>
